@@ -17,11 +17,11 @@ interface Inventory {
   store_name: string;
   store_address: string;
   book_name: string;
-  pages: number; // Parsed from CSV string
+  pages: number;
   author_name: string;
-  price: number; // Parsed from CSV string
-  logo: string; // URL or filename
-  copies: number; // Used for incrementing stock
+  price: number;
+  logo: string;
+  copies: number;
 }
 export const parseCSVBuffer = async (file: Buffer) => {
   const inventoryMap = new Map<string, any>();
@@ -77,7 +77,7 @@ export const pipeline = async (file: Buffer) => {
         });
       }
     });
-    const [savedAuthors, savedStores] = await Promise.all([
+    const [_savedAuthors, savedStores] = await Promise.all([
       AuthorModel.bulkCreate(authors, {
         ignoreDuplicates: true,
         transaction: t,
@@ -89,6 +89,7 @@ export const pipeline = async (file: Buffer) => {
         returning: true,
       }) as unknown as Store[],
     ]);
+    const savedAuthors = (await AuthorModel.findAll()) as unknown as Author[];
     const storeIdMap = new Map(
       savedStores.map((s) => [`${s.name}|${s.address}`, s.id])
     );
@@ -121,24 +122,21 @@ export const pipeline = async (file: Buffer) => {
       const bookId = bookIdMap.get(
         `${r.book_name}|${authorIdMap.get(r.author_name)}`
       );
-
       const key = `${storeId}|${bookId}`;
-
       if (!storeBooksMap.has(key)) {
         storeIds.push(storeId as number);
         bookIds.push(bookId as number);
-
         storeBooksMap.set(key, {
           storeId,
           bookId,
           price: r.price,
-          copies: r.copies,
+          copies: 1,
+          isSoldOut: false,
         });
       } else {
-        storeBooksMap.get(key).copies += r.copies;
+        storeBooksMap.get(key).copies += 1;
       }
     });
-    //These are the already stored books in database
     const savedStoreBooks = (await StoreBookModel.findAll({
       where: { storeId: { [Op.in]: storeIds }, bookId: { [Op.in]: bookIds } },
     })) as unknown as StoreBook[];
