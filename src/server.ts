@@ -10,6 +10,7 @@ import Store from "./models/store.model";
 import StoreBook from "./models/store-book.model";
 import Book from "./models/book.mode";
 import Author from "./models/author.model";
+import routes from "./routes/index";
 dotenv.config();
 const app = express();
 const port = process.env.PORT || "3000";
@@ -25,7 +26,7 @@ app.get("/healthcheck", (req, res) => {
 });
 
 //All Routes
-// app.use("/api/v1/", routes);
+app.use("/api/", routes);
 
 //Route Not Found redirction
 app.use(notFoundMiddleware);

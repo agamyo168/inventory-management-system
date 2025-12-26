@@ -1,0 +1,32 @@
+store_name,store_address,book_name,pages,author_name,price,logo
+Book Haven,123 Main St, New York, NY,The Great Gatsby,218,F. Scott Fitzgerald,12.99,https://example.com/logos/bookhaven.png
+Book Haven,123 Main St, New York, NY,The Great Gatsby,218,F. Scott Fitzgerald,12.99,https://example.com/logos/bookhaven.png
+Book Haven,123 Main St, New York, NY,To Kill a Mockingbird,281,Harper Lee,14.99,https://example.com/logos/bookhaven.png
+Book Haven,123 Main St, New York, NY,1984,328,George Orwell,10.99,https://example.com/logos/bookhaven.png
+Literary World,456 Oak Ave, Boston, MA,Pride and Prejudice,279,Jane Austen,13.50,https://example.com/logos/literaryworld.jpg
+Literary World,456 Oak Ave, Boston, MA,The Catcher in the Rye,277,J.D. Salinger,11.99,https://example.com/logos/literaryworld.jpg
+Literary World,456 Oak Ave, Boston, MA,The Hobbit,310,J.R.R. Tolkien,16.99,https://example.com/logos/literaryworld.jpg
+Page Turner,789 Pine Rd, Chicago, IL,Moby-Dick,635,Herman Melville,18.99,https://example.com/logos/pageturner.svg
+Page Turner,789 Pine Rd, Chicago, IL,War and Peace,1225,Leo Tolstoy,24.99,https://example.com/logos/pageturner.svg
+Page Turner,789 Pine Rd, Chicago, IL,The Odyssey,541,Homer,15.50,https://example.com/logos/pageturner.svg
+Read More,321 Elm St, Seattle, WA,Crime and Punishment,671,Fyodor Dostoevsky,17.99,https://example.com/logos/readmore.png
+Read More,321 Elm St, Seattle, WA,The Brothers Karamazov,824,Fyodor Dostoevsky,21.99,https://example.com/logos/readmore.png
+Read More,321 Elm St, Seattle, WA,Anna Karenina,864,Leo Tolstoy,19.99,https://example.com/logos/readmore.png
+Novel Ideas,654 Maple Dr, Austin, TX,Ulysses,730,James Joyce,22.50,https://example.com/logos/novelideas.jpg
+Novel Ideas,654 Maple Dr, Austin, TX,The Divine Comedy,798,Dante Alighieri,20.99,https://example.com/logos/novelideas.jpg
+Novel Ideas,654 Maple Dr, Austin, TX,Don Quixote,863,Miguel de Cervantes,18.50,https://example.com/logos/novelideas.jpg
+Book Worm,987 Cedar Ln, Denver, CO,Madame Bovary,491,Gustave Flaubert,14.99,https://example.com/logos/bookworm.png
+Book Worm,987 Cedar Ln, Denver, CO,Wuthering Heights,464,Emily Brontë,13.99,https://example.com/logos/bookworm.png
+Book Worm,987 Cedar Ln, Denver, CO,Jane Eyre,507,Charlotte Brontë,14.50,https://example.com/logos/bookworm.png
+Story Corner,147 Birch Blvd, Atlanta, GA,The Iliad,683,Homer,16.99,https://example.com/logos/storycorner.svg
+Story Corner,147 Birch Blvd, Atlanta, GA,Heart of Darkness,188,Joseph Conrad,11.99,https://example.com/logos/storycorner.svg
+Story Corner,147 Birch Blvd, Atlanta, GA,Heart of Darkness,188,Joseph Conrad,11.99,https://example.com/logos/storycorner.svg
+Story Corner,147 Birch Blvd, Atlanta, GA,Heart of Darkness,188,Joseph Conrad,11.99,https://example.com/logos/storycorner.svg
+Story Corner,147 Birch Blvd, Atlanta, GA,Heart of Darkness,188,Joseph Conrad,11.99,https://example.com/logos/storycorner.svg
+Story Corner,147 Birch Blvd, Atlanta, GA,Heart of Darkness,188,Joseph Conrad,11.99,https://example.com/logos/storycorner.svg
+Story Corner,147 Birch Blvd, Atlanta, GA,The Aeneid,442,Virgil,15.99,https://example.com/logos/storycorner.svg
+Chapter One,258 Spruce Way, Miami, FL,The Count of Monte Cristo,1276,Alexandre Dumas,26.99,https://example.com/logos/chapterone.png
+Chapter One,258 Spruce Way, Miami, FL,Les Misérables,1463,Victor Hugo,28.99,https://example.com/logos/chapterone.png
+Chapter One,258 Spruce Way, Miami, FL,The Three Musketeers,704,Alexandre Dumas,19.99,https://example.com/logos/chapterone.png
+Chapter One,258 Spruce Way, Miami, FL,The Three Musketeers,704,Alexandre Dumas,19.99,https://example.com/logos/chapterone.png
+
