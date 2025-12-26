@@ -36,9 +36,8 @@ app.use(errorHandlerMiddleware);
 
 const start = async () => {
   try {
-    await sequelize
-      // { force: true }
-      .sync(); //TODO: disable it when you write migration files!!
+    await sequelize.sync(); //TODO: disable it when you write migration files!!
+    //Should probably move this to a file somewhere else
     StoreModel.belongsToMany(BookModel, {
       through: StoreBookModel,
       foreignKey: "storeId",

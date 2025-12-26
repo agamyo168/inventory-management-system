@@ -1,0 +1,78 @@
+{
+	"info": {
+		"_postman_id": "2d2b5dad-1560-4ffc-84a8-20f5ef5216a5",
+		"name": "Inventory",
+		"description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "51057896",
+		"_collection_link": "https://agamyo168-9433076.postman.co/workspace/Omar-Agamy's-Workspace~e0b01097-76de-45f2-85e1-dd24e3c29908/collection/51057896-2d2b5dad-1560-4ffc-84a8-20f5ef5216a5?action=share&source=collection_link&creator=51057896"
+	},
+	"item": [
+		{
+			"name": "Post data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/home/jimbo/git/personal/ovarc/assets/test.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/api/inventory/upload",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"inventory",
+						"upload"
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "Get PDF",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/store/2/download-report",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"store",
+						"2",
+						"download-report"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
