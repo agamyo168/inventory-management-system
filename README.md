@@ -7,7 +7,7 @@ A robust backend system built with **Node.js**, **Express**, and **Sequelize** f
     Runtime: Node.js with TypeScript
     Framework: Express.js
     ORM: Sequelize (SQL-based)
-    Database: SQLite (Used for portability in this challenge, easily swappable to PostgreSQL)
+    Database: Postgres
     PDF Generation: PDFKit
     CSV Parsing: fast-csv
 
