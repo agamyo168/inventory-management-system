@@ -1,0 +1,40 @@
+services:
+  inventory_db:
+    image: "postgres"
+    env_file:
+      - .env.dev
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - inventory_network
+    volumes:
+      - inventory_postgres:/var/lib/postgres
+  inventory:
+    build: .
+    env_file:
+      - .env.dev
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - .:/app
+      - inventory_node_modules_volume:/app/node_modules
+    depends_on:
+      inventory_db:
+        condition: service_healthy
+    networks:
+      - inventory_network
+
+networks:
+  inventory_network:
+    driver: bridge
+volumes:
+  inventory_postgres:
+  inventory_node_modules_volume:
