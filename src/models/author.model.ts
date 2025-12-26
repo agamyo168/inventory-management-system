@@ -4,7 +4,7 @@ export interface Author extends Model {
   id: number;
   name: string;
 }
-const Author = sequelize.define(
+const AuthorModel = sequelize.define(
   "Author",
   {
     id: {
@@ -22,4 +22,4 @@ const Author = sequelize.define(
   { timestamps: true }
 );
 
-export default Author;
+export default AuthorModel;

@@ -7,7 +7,7 @@ export interface StoreBook extends Model {
   copies: number;
   isSoldOut: boolean;
 }
-const StoreBook = sequelize.define(
+const StoreBookModel = sequelize.define(
   "StoreBook",
   {
     storeId: {
@@ -50,4 +50,4 @@ const StoreBook = sequelize.define(
   { timestamps: true }
 );
 
-export default StoreBook;
+export default StoreBookModel;

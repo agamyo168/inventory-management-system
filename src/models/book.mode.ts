@@ -6,7 +6,7 @@ export interface Book extends Model {
   pages: number;
   authorId: number;
 }
-const Book = sequelize.define(
+const BookModel = sequelize.define(
   "Book",
   {
     id: {
@@ -38,4 +38,4 @@ const Book = sequelize.define(
   { timestamps: true }
 );
 
-export default Book;
+export default BookModel;

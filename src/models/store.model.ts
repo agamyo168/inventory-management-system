@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../utils/db/connect";
 export interface Store extends Model {
@@ -6,7 +7,7 @@ export interface Store extends Model {
   address: string;
   logo: string;
 }
-const Store = sequelize.define(
+const StoreModel = sequelize.define(
   "Store",
   {
     id: {
@@ -29,7 +30,15 @@ const Store = sequelize.define(
     },
   },
   // eslint-disable-next-line prettier/prettier
-  { timestamps: true }
+  {
+    timestamps: true,
+    indexes: [
+      {
+        unique: true,
+        fields: ["name", "address"],
+      },
+    ],
+  }
 );
 
-export default Store;
+export default StoreModel;
