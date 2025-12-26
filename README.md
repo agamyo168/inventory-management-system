@@ -28,6 +28,11 @@ rename `.env.example` to `.env`
 docker-compose up --build
 ```
 
+## Endpoints:
+
+- `POST /api/inventory/upload` -> requires a CSV file.
+- `GET /api/store/:storeId/download-report` -> returns a PDF.
+
 ## Timing
 
 Started At `7:05 PM` -> `12:05 AM` (5 Hours)
