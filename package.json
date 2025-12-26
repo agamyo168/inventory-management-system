@@ -19,6 +19,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "axios": "^1.13.2",
     "bcryptjs": "^2.4.3",
     "dayjs": "^1.11.13",
     "express": "^4.21.2",
@@ -27,6 +28,7 @@
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
     "multer": "^2.0.2",
+    "pdfkit": "^0.17.2",
     "pg": "^8.13.1",
     "pino": "^9.5.0",
     "sequelize": "^6.37.5",
@@ -41,6 +43,7 @@
     "@types/jsonwebtoken": "^9.0.7",
     "@types/multer": "^2.0.0",
     "@types/node": "^22.10.2",
+    "@types/pdfkit": "^0.17.4",
     "@types/pg": "^8.11.10",
     "@types/pino": "^7.0.4",
     "@types/pino-pretty": "^4.7.5",

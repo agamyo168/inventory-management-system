@@ -19,6 +19,7 @@ export const upload = async (
 
     res.status(StatusCodes.OK).json({ sucess: true, data });
   } catch (err) {
+    logger.error(err);
     return next(err);
   }
 };

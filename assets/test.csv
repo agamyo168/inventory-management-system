@@ -1,11 +1,24 @@
 store_name,store_address,book_name,pages,author_name,price,logo
-Blue Nile Books,12 Tahrir St Cairo,The Silent Minaret,312,Omar El Sherif,199.99,blue_nile.png
-Alexandria Reads,45 Corniche Rd Alexandria,Sea of Papyrus,248,Mariam Youssef,149.50,alex_reads.jpg
-Cairo Knowledge Hub,101 Nasr City Cairo,Algorithms Unlocked,420,Ahmed Hassan,299.00,ckh.svg
-Desert Pages,7 Oasis Mall 6th October,Code in the Sands,365,Sara Abdelrahman,259.75,desert_pages.png
-Lotus Bookstore,22 Zamalek Cairo,The Lotus Algorithm,198,Youssef Kamal,179.99,lotus_logo.jpg
-Pharaoh Books,88 Luxor Street Giza,Legacy of the Nile,540,Nour El Din,349.00,pharaoh_books.png
-Delta Reads,3 Mansoura Square Mansoura,Data Structures Simplified,310,Hany Mostafa,219.90,delta_reads.svg
-Sunrise Library,19 El Geish Rd Port Said,Concurrency Explained,275,Laila Farouk,239.00,sunrise_lib.png
-Palm Tree Books,5 Marina Walk North Coast,System Design Stories,460,Karim Adel,389.99,palm_tree.png
-Red Sea Books,11 Sheraton Rd Hurghada,Scalable APIs in Practice,355,Mona Saeed,279.50,red_sea_books.jpg
+Blue Nile Books,12 Tahrir St Cairo,The Silent Minaret,312,Omar El Sherif,199.99,https://picsum.photos/200
+Alexandria Reads,45 Corniche Rd Alexandria,Sea of Papyrus,248,Mariam Youssef,149.50,https://picsum.photos/200
+Alexandria Reads,45 Corniche Rd Alexandria,Sea of Papyrus,248,Mariam Youssef,149.50,https://picsum.photos/200
+Alexandria Reads,45 Corniche Rd Alexandria,Sea of Papyrus,248,Mariam Youssef,149.50,https://picsum.photos/200
+Alexandria Reads,45 Corniche Rd Alexandria,Sea of Papyrus,248,Mariam Youssef,149.50,https://picsum.photos/200
+Alexandria Reads,45 Corniche Rd Alexandria,Sea of Deed,248,Mariam Youssef,149.50,https://picsum.photos/200
+
+Alexandria Reads,45 Corniche Rd Alexandria,Algorithms Unlocked,420,Ahmed Hassan,299.00,https://picsum.photos/200
+Alexandria Reads,45 Corniche Rd Alexandria,Code in the Sands,365,Sara Abdelrahman,259.75,https://picsum.photos/200
+
+Cairo Knowledge Hub,101 Nasr City Cairo,Algorithms Unlocked,420,Ahmed Hassan,299.00,https://picsum.photos/200
+
+Desert Pages,7 Oasis Mall 6th October,Code in the Sands,365,Sara Abdelrahman,259.75,https://picsum.photos/200
+Desert Pages,7 Oasis Mall 6th October,Code in the Sands,365,Sara Abdelrahman,259.75,https://picsum.photos/200
+Desert Pages,7 Oasis Mall 6th October,Code in the Sands,365,Sara Abdelrahman,259.75,https://picsum.photos/200
+Desert Pages,7 Oasis Mall 6th October,Code in the Sands,365,Sara Abdelrahman,259.75,https://picsum.photos/200
+
+Lotus Bookstore,22 Zamalek Cairo,The Lotus Algorithm,198,Youssef Kamal,179.99,https://picsum.photos/200
+Pharaoh Books,88 Luxor Street Giza,Legacy of the Nile,540,Nour El Din,349.00,https://picsum.photos/200
+Delta Reads,3 Mansoura Square Mansoura,Data Structures Simplified,310,Hany Mostafa,219.90,https://picsum.photos/200
+Sunrise Library,19 El Geish Rd Port Said,Concurrency Explained,275,Laila Farouk,239.00,https://picsum.photos/200
+Palm Tree Books,5 Marina Walk North Coast,System Design Stories,460,Karim Adel,389.99,https://picsum.photos/200
+Red Sea Books,11 Sheraton Rd Hurghada,Scalable APIs in Practice,355,Mona Saeed,279.50,https://picsum.photos/200

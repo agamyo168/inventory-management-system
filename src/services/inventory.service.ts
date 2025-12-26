@@ -5,7 +5,6 @@
 
 import { Readable } from "stream";
 import { parse } from "fast-csv";
-import logger from "../utils/logger";
 import AuthorModel, { Author } from "../models/author.model";
 import sequelize from "../utils/db/connect";
 import BookModel, { Book } from "../models/book.mode";

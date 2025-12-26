@@ -6,11 +6,11 @@ import { errorHandlerMiddleware } from "./middlewares/error";
 import notFoundMiddleware from "./middlewares/notfound.middleware";
 import sequelize from "./utils/db/connect";
 import logger from "./utils/logger";
-import Store from "./models/store.model";
-import StoreBook from "./models/store-book.model";
-import Book from "./models/book.mode";
-import Author from "./models/author.model";
 import routes from "./routes/index";
+import StoreModel from "./models/store.model";
+import StoreBookModel from "./models/store-book.model";
+import BookModel from "./models/book.mode";
+import AuthorModel from "./models/author.model";
 dotenv.config();
 const app = express();
 const port = process.env.PORT || "3000";
@@ -36,22 +36,28 @@ app.use(errorHandlerMiddleware);
 
 const start = async () => {
   try {
-    await sequelize.sync({ force: true }); //TODO: disable it when you write migration files!!
-    Store.belongsToMany(Book, {
-      through: StoreBook,
+    await sequelize
+      // { force: true }
+      .sync(); //TODO: disable it when you write migration files!!
+    StoreModel.belongsToMany(BookModel, {
+      through: StoreBookModel,
       foreignKey: "storeId",
     });
-    Book.belongsToMany(Store, {
-      through: StoreBook,
+    BookModel.belongsToMany(StoreModel, {
+      through: StoreBookModel,
       foreignKey: "bookId",
     });
-    Book.belongsTo(Author, {
+    BookModel.belongsTo(AuthorModel, {
       foreignKey: "authorId",
     });
+    AuthorModel.hasMany(BookModel, {
+      foreignKey: "authorId",
+    });
+    StoreBookModel.belongsTo(BookModel, { foreignKey: "bookId" });
+    StoreBookModel.belongsTo(StoreModel, { foreignKey: "storeId" });
+    BookModel.hasMany(StoreBookModel, { foreignKey: "bookId" });
+    StoreModel.hasMany(StoreBookModel, { foreignKey: "storeId" });
 
-    Author.hasMany(Book, {
-      foreignKey: "authorId",
-    });
     logger.info("DB connected");
     app.listen(port, () => {
       logger.info(`App is running at http://localhost:${port}`);
