@@ -18,7 +18,6 @@ const AuthorModel = sequelize.define(
       unique: true,
     },
   },
-  // eslint-disable-next-line prettier/prettier
   { timestamps: true },
 );
 
