@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { DataTypes, Model } from "sequelize";
-import sequelize from "../utils/db/connect";
+import { DataTypes, Model } from 'sequelize';
+import sequelize from '../utils/db/connect';
 export interface Store extends Model {
   id: number;
   name: string;
@@ -8,7 +8,7 @@ export interface Store extends Model {
   logo: string;
 }
 const StoreModel = sequelize.define(
-  "Store",
+  'Store',
   {
     id: {
       type: DataTypes.INTEGER,
@@ -35,10 +35,10 @@ const StoreModel = sequelize.define(
     indexes: [
       {
         unique: true,
-        fields: ["name", "address"],
+        fields: ['name', 'address'],
       },
     ],
-  }
+  },
 );
 
 export default StoreModel;

@@ -7,7 +7,7 @@ const errorHandlerMiddleware = (
   err: CustomError,
   _req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   logger.error(err);
   const status = err?.status || StatusCodes.INTERNAL_SERVER_ERROR;

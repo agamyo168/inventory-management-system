@@ -1,11 +1,11 @@
-import { DataTypes, Model } from "sequelize";
-import sequelize from "../utils/db/connect";
+import { DataTypes, Model } from 'sequelize';
+import sequelize from '../utils/db/connect';
 export interface Author extends Model {
   id: number;
   name: string;
 }
 const AuthorModel = sequelize.define(
-  "Author",
+  'Author',
   {
     id: {
       type: DataTypes.INTEGER,
@@ -19,7 +19,7 @@ const AuthorModel = sequelize.define(
     },
   },
   // eslint-disable-next-line prettier/prettier
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export default AuthorModel;

@@ -3,14 +3,14 @@
 //2. BulkInsert to Store and make sure it's idempotent when the CSV doesn't change!
 //3. Start parsing the book data and handle it in a similar fashion! + Managed Transaction and error message
 
-import { Readable } from "stream";
-import { parse } from "fast-csv";
-import AuthorModel, { Author } from "../models/author.model";
-import sequelize from "../utils/db/connect";
-import BookModel, { Book } from "../models/book.mode";
-import StoreModel, { Store } from "../models/store.model";
-import StoreBookModel, { StoreBook } from "../models/store-book.model";
-import { Op } from "sequelize";
+import { Readable } from 'stream';
+import { parse } from 'fast-csv';
+import AuthorModel, { Author } from '../models/author.model';
+import sequelize from '../utils/db/connect';
+import BookModel, { Book } from '../models/book.mode';
+import StoreModel, { Store } from '../models/store.model';
+import StoreBookModel, { StoreBook } from '../models/store-book.model';
+import { Op } from 'sequelize';
 
 //4. Figure out how to increment repeated books -> Sequelize should be able to handle this by default!
 interface Inventory {
@@ -32,10 +32,10 @@ export const parseCSVBuffer = async (file: Buffer) => {
           headers: true,
           trim: true,
           ignoreEmpty: true,
-        })
+        }),
       )
-      .on("error", reject)
-      .on("data", (r) => {
+      .on('error', reject)
+      .on('data', (r) => {
         //TODO: JOI Validation per ROW!
         const key = `${r.store_name}|${r.store_address}|${r.book_name}|${r.author_name}`;
         if (!inventoryMap.has(key)) {
@@ -47,7 +47,7 @@ export const parseCSVBuffer = async (file: Buffer) => {
           inventoryMap.get(key).copies += 1;
         }
       })
-      .on("end", () => {
+      .on('end', () => {
         resolve(Array.from(inventoryMap.values()));
       });
   });
@@ -84,14 +84,14 @@ export const pipeline = async (file: Buffer) => {
         returning: true,
       }) as unknown as Author[],
       StoreModel.bulkCreate(stores, {
-        updateOnDuplicate: ["logo"],
+        updateOnDuplicate: ['logo'],
         transaction: t,
         returning: true,
       }) as unknown as Store[],
     ]);
     const savedAuthors = (await AuthorModel.findAll()) as unknown as Author[];
     const storeIdMap = new Map(
-      savedStores.map((s) => [`${s.name}|${s.address}`, s.id])
+      savedStores.map((s) => [`${s.name}|${s.address}`, s.id]),
     );
     const authorIdMap = new Map(savedAuthors.map((a) => [a.name, a.id]));
     const booksMap = new Map<string, Partial<Book>>();
@@ -107,12 +107,12 @@ export const pipeline = async (file: Buffer) => {
       }
     });
     const savedBooks = (await BookModel.bulkCreate([...booksMap.values()], {
-      updateOnDuplicate: ["pages"],
+      updateOnDuplicate: ['pages'],
       transaction: t,
       returning: true,
     })) as unknown as Book[];
     const bookIdMap = new Map(
-      savedBooks.map((b) => [`${b.name}|${b.authorId}`, b.id])
+      savedBooks.map((b) => [`${b.name}|${b.authorId}`, b.id]),
     );
     const storeBooksMap = new Map<string, any>();
     const storeIds: number[] = [];
@@ -120,7 +120,7 @@ export const pipeline = async (file: Buffer) => {
     inventory.forEach((r) => {
       const storeId = storeIdMap.get(`${r.store_name}|${r.store_address}`);
       const bookId = bookIdMap.get(
-        `${r.book_name}|${authorIdMap.get(r.author_name)}`
+        `${r.book_name}|${authorIdMap.get(r.author_name)}`,
       );
       const key = `${storeId}|${bookId}`;
       if (!storeBooksMap.has(key)) {
@@ -145,7 +145,7 @@ export const pipeline = async (file: Buffer) => {
       storeBooksMap.get(key).copies += Number(storeBook.copies) || 0;
     });
     await StoreBookModel.bulkCreate([...storeBooksMap.values()], {
-      updateOnDuplicate: ["copies", "price", "isSoldOut"],
+      updateOnDuplicate: ['copies', 'price', 'isSoldOut'],
       transaction: t,
     });
   });
