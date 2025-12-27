@@ -2,7 +2,7 @@ import { DataTypes, Model } from 'sequelize';
 import sequelize from '../utils/db/connect';
 export interface StoreBook extends Model {
   storeId: number;
-  bookId: string;
+  bookId: number;
   price: number;
   copies: number;
   isSoldOut: boolean;
@@ -46,7 +46,6 @@ const StoreBookModel = sequelize.define(
       allowNull: false,
     },
   },
-  // eslint-disable-next-line prettier/prettier
   { timestamps: true },
 );
 
