@@ -86,5 +86,5 @@ export const pdfReport = async (storeId: number) => {
   );
 
   doc.end();
-  return doc;
+  return { storeName: store.name, doc };
 };

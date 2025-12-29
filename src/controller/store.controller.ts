@@ -15,12 +15,11 @@ export const getPdfReport = async (
       throw new BadRequestError('STORE_ID_MUST_BE_A_NUMBER');
     }
 
-    const doc = await pdfReport(storeId);
+    const { storeName, doc } = await pdfReport(storeId);
+    const fileName = `${storeName}_Report_${new Date().toISOString().split('T')[0]}.pdf`;
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename="${fileName}"`);
     doc.pipe(res);
-    //TODO: send back a PDF
-    // res.status(StatusCodes.OK).json({
-    //   success: true,
-    // });
   } catch (error) {
     logger.error(error);
     return next(error);
