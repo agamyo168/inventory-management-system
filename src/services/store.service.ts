@@ -4,7 +4,6 @@ import AuthorModel from '../models/author.model';
 import sequelize from 'sequelize';
 import StoreModel, { Store } from '../models/store.model';
 import PDFDocument from 'pdfkit';
-import logger from '../utils/logger';
 import NotFound from '../middlewares/error/custom/notfound.error.class';
 import axios from 'axios';
 
@@ -67,7 +66,6 @@ export const pdfReport = async (storeId: number) => {
       bookCount: number;
     }[],
   ]);
-  logger.info(`${store}: ${storeId}`);
 
   if (!store) throw new NotFound('STORE_NOT_FOUND');
   const logoBuffer = await fetchImage(store.logo);
