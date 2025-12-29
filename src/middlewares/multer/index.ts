@@ -1,6 +1,6 @@
 import multer from 'multer';
 
-const storage = multer.memoryStorage(); // best for CSV processing
+const storage = multer.memoryStorage();
 
 export const uploadCSV = multer({
   storage,
@@ -11,6 +11,6 @@ export const uploadCSV = multer({
     cb(null, true);
   },
   limits: {
-    fileSize: 5 * 1024 * 1024, // 5MB
+    fileSize: 5 * 1024 * 1024,
   },
 });

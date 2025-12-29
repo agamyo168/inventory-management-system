@@ -3,6 +3,8 @@
 //2. BulkInsert to Store and make sure it's idempotent when the CSV doesn't change!
 //3. Start parsing the book data and handle it in a similar fashion! + Managed Transaction and error message
 //4. Figure out how to increment repeated books -> Sequelize should be able to handle this by default!
+//   Average speed is 20ms tested (10 rows) and 70ms for (1000 rows) on my laptop
+//   I think this officially means that batching was a bad idea for this test and risks OOM even(?)
 
 import { Readable } from 'stream';
 import { parse } from 'fast-csv';
@@ -23,6 +25,7 @@ interface Inventory {
   logo: string;
   copies: number;
 }
+
 export const parseCSVBuffer = async (file: Buffer) => {
   const inventoryMap = new Map<string, Inventory>();
   return new Promise((resolve, reject) => {
@@ -37,6 +40,7 @@ export const parseCSVBuffer = async (file: Buffer) => {
       .on('error', reject)
       .on('data', (r: Inventory) => {
         //TODO: JOI Validation per ROW!
+
         const key = `${r.store_name}|${r.store_address}|${r.book_name}|${r.author_name}`;
         const row = inventoryMap.get(key);
         if (row) {

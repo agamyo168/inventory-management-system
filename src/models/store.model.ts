@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '../utils/db/connect';
 export interface Store extends Model {
@@ -29,7 +28,6 @@ const StoreModel = sequelize.define(
       allowNull: false,
     },
   },
-  // eslint-disable-next-line prettier/prettier
   {
     timestamps: true,
     indexes: [
