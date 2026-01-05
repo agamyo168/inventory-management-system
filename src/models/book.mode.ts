@@ -1,5 +1,5 @@
-import { DataTypes, Model } from "sequelize";
-import sequelize from "../utils/db/connect";
+import { DataTypes, Model } from 'sequelize';
+import sequelize from '../utils/db/connect';
 export interface Book extends Model {
   id: number;
   name: string;
@@ -7,7 +7,7 @@ export interface Book extends Model {
   authorId: number;
 }
 const BookModel = sequelize.define(
-  "Book",
+  'Book',
   {
     id: {
       type: DataTypes.INTEGER,
@@ -27,15 +27,15 @@ const BookModel = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "Authors", // table name
-        key: "id",
+        model: 'Authors', // table name
+        key: 'id',
       },
-      onUpdate: "CASCADE",
-      onDelete: "RESTRICT", // or CASCADE if you prefer
+      onUpdate: 'CASCADE',
+      onDelete: 'RESTRICT', // or CASCADE if you prefer
     },
   },
   // eslint-disable-next-line prettier/prettier
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export default BookModel;

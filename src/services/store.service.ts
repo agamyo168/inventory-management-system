@@ -1,20 +1,19 @@
-import BookModel from "../models/book.mode";
-import StoreBookModel from "../models/store-book.model";
-import AuthorModel from "../models/author.model";
-import sequelize from "sequelize";
-import StoreModel, { Store } from "../models/store.model";
-import PDFDocument from "pdfkit";
-import logger from "../utils/logger";
-import NotFound from "../middlewares/error/custom/notfound.error.class";
-import axios from "axios";
+import BookModel from '../models/book.mode';
+import StoreBookModel from '../models/store-book.model';
+import AuthorModel from '../models/author.model';
+import sequelize from 'sequelize';
+import StoreModel, { Store } from '../models/store.model';
+import PDFDocument from 'pdfkit';
+import NotFound from '../middlewares/error/custom/notfound.error.class';
+import axios from 'axios';
 
 export const topFivePricedBooks = async (storeId: number) => {
   return StoreBookModel.findAll({
-    attributes: [[sequelize.col("name"), "bookName"], "price"],
+    attributes: [[sequelize.col('name'), 'bookName'], 'price'],
     where: {
       storeId,
     },
-    order: [["price", "DESC"]],
+    order: [['price', 'DESC']],
     limit: 5,
     include: [
       {
@@ -30,8 +29,8 @@ export const topFivePricedBooks = async (storeId: number) => {
 export const topFiveProlificAuthors = async (storeId: number) => {
   return StoreBookModel.findAll({
     attributes: [
-      [sequelize.col("Book.Author.name"), "authorName"],
-      [sequelize.fn("COUNT", sequelize.col("Book.id")), "bookCount"],
+      [sequelize.col('Book.Author.name'), 'authorName'],
+      [sequelize.fn('COUNT', sequelize.col('Book.id')), 'bookCount'],
     ],
     include: [
       {
@@ -43,15 +42,15 @@ export const topFiveProlificAuthors = async (storeId: number) => {
     ],
     where: { storeId },
 
-    group: [sequelize.col("Book.Author.id")],
-    order: [[sequelize.fn("COUNT", sequelize.col("Book.id")), "DESC"]],
+    group: [sequelize.col('Book.Author.id')],
+    order: [[sequelize.fn('COUNT', sequelize.col('Book.id')), 'DESC']],
     limit: 5,
     subQuery: false,
     raw: true,
   });
 };
 export const fetchImage = async (url: string) => {
-  const response = await axios.get(url, { responseType: "arraybuffer" });
+  const response = await axios.get(url, { responseType: 'arraybuffer' });
   return Buffer.from(response.data);
 };
 
@@ -67,24 +66,23 @@ export const pdfReport = async (storeId: number) => {
       bookCount: number;
     }[],
   ]);
-  logger.info(`${store}: ${storeId}`);
 
-  if (!store) throw new NotFound("STORE_NOT_FOUND");
+  if (!store) throw new NotFound('STORE_NOT_FOUND');
   const logoBuffer = await fetchImage(store.logo);
   const doc = new PDFDocument();
   // Render content
   doc.image(logoBuffer, { width: 50 });
-  doc.fontSize(25).text(store.name, { align: "center" });
+  doc.fontSize(25).text(store.name, { align: 'center' });
   doc.moveDown();
-  doc.fontSize(18).text("Top 5 Priciest Books");
+  doc.fontSize(18).text('Top 5 Priciest Books');
   books.forEach((b) => doc.fontSize(12).text(`${b.bookName} - $${b.price}`));
 
   doc.moveDown();
-  doc.fontSize(18).text("Top 5 Prolific Authors");
+  doc.fontSize(18).text('Top 5 Prolific Authors');
   authors.forEach((a) =>
-    doc.fontSize(12).text(`${a.authorName} (${a.bookCount} books)`)
+    doc.fontSize(12).text(`${a.authorName} (${a.bookCount} books)`),
   );
 
   doc.end();
-  return doc;
+  return { storeName: store.name, doc };
 };

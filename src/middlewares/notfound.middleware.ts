@@ -3,7 +3,7 @@ import NotFound from './error/custom/notfound.error.class';
 const notFoundMiddleware = (
   _req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   return next(new NotFound("This resource doesn't exist"));
 };

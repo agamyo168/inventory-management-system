@@ -1,36 +1,36 @@
-import { DataTypes, Model } from "sequelize";
-import sequelize from "../utils/db/connect";
+import { DataTypes, Model } from 'sequelize';
+import sequelize from '../utils/db/connect';
 export interface StoreBook extends Model {
   storeId: number;
-  bookId: string;
+  bookId: number;
   price: number;
   copies: number;
   isSoldOut: boolean;
 }
 const StoreBookModel = sequelize.define(
-  "StoreBook",
+  'StoreBook',
   {
     storeId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       references: {
-        model: "Stores",
-        key: "id",
+        model: 'Stores',
+        key: 'id',
       },
-      onDelete: "CASCADE",
-      onUpdate: "CASCADE",
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
     },
     bookId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       references: {
-        model: "Books",
-        key: "id",
+        model: 'Books',
+        key: 'id',
       },
-      onDelete: "CASCADE",
-      onUpdate: "CASCADE",
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
     },
     price: {
       type: DataTypes.DECIMAL(10, 2),
@@ -46,8 +46,7 @@ const StoreBookModel = sequelize.define(
       allowNull: false,
     },
   },
-  // eslint-disable-next-line prettier/prettier
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export default StoreBookModel;
